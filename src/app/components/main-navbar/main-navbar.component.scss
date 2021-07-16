@@ -1,0 +1,47 @@
+.logo{
+  box-sizing: border-box;
+  min-width: 0;
+  cursor: pointer;
+  width: 120px;
+  min-width: 120px;
+  fill: #1E2329;
+  fill: #F0B90B;
+  height: 24px;
+  margin: 0 16px 0 24px;
+}
+
+.menu-item{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
+  margin: 0;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 8px;
+  padding-right: 16px;
+  height: 55px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  color: #fff;
+  cursor: pointer;
+  line-height: 64px;
+}
+.nav-left{
+  margin-left: 250px !important;
+}
+.decoration {
+  list-style-type: none;
+}

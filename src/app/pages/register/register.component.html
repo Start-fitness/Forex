@@ -1,0 +1,41 @@
+<form [formGroup]="registerForm">
+  <div class="input-field">
+    <label class="label-width">E-mail</label>
+    <input type="email" formControlName="email" required/>
+    <div *ngIf="registerForm.get('email').touched && registerForm.get('email').invalid" class="validation">
+      <small class="text-danger" *ngIf="registerForm.get('email').errors.required">Enter email</small>
+      <small class="text-danger" *ngIf="registerForm.get('email').errors.email">Enter correctly email</small>
+    </div>
+  </div>
+  <div class="input-field"
+       [ngClass]="{invalid: registerForm.get('password').touched && registerForm.get('password').invalid}">
+    <label class="label-width">Password</label>
+    <input type="password" formControlName="password" required/>
+    <div *ngIf="registerForm.get('password').touched && registerForm.get('password').invalid" class="validation">
+      <small class="text-danger" *ngIf="registerForm.get('password').errors.required">Enter password</small>
+      <small class="text-danger" *ngIf="registerForm.get('password').errors.minlength">
+        Password not less  {{registerForm.get('password').errors.minlength.requiredLength}} symbols.
+        Now {{registerForm.get('password').errors.minlength.actualLength}}
+      </small>
+    </div>
+  </div>
+  <div class="input-field"
+       [ngClass]="{invalid: registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid}">
+    <label class="label-width">Confirm</label>
+    <input type="password" formControlName="confirmPassword" required/>
+    <div *ngIf="registerForm.get('confirmPassword').touched && registerForm.get('confirmPassword').invalid" class="validation">
+      <small class="text-danger" *ngIf="registerForm.get('confirmPassword').errors.required">Confirm password</small>
+      <small class="text-danger" *ngIf="registerForm.get('confirmPassword').errors.minlength">
+        Password not less  {{registerForm.get('confirmPassword').errors.minlength.requiredLength}} symbols.
+        Now {{registerForm.get('confirmPassword').errors.minlength.actualLength}}
+      </small>
+    </div>
+  </div>
+  <div class="card-action">
+    <button class="btn btn-color" [disabled]="registerForm.invalid || submitted" (click)="submit()">
+      Create account
+    </button>
+  </div>
+</form>
+
+

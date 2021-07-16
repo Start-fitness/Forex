@@ -1,0 +1,42 @@
+form {
+  display: block;
+  padding-top: 32vh;
+  padding-bottom: 33vh;
+  max-width: 300px;
+  margin: 0 auto;
+}
+#password{
+  margin-right: 1px;
+}
+#email{
+  margin-right: 1px;
+}
+.btn-block{
+  background: #000;
+}
+.login-page {
+  text-align: center;
+  margin-top: 10rem;
+}
+
+#controls {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+.label-width {
+  width: 100px;
+}
+.button-right {
+  padding-left: 100px;
+}
+.btn-color {
+  background-image: linear-gradient(
+      180deg
+    ,#F8D12F 0%,#F0B90B 100%);
+  color: #212833;
+}
+btn:hover {
+  cursor: pointer;
+}

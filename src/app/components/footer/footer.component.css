@@ -1,0 +1,15 @@
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-title {
+  width: 100px;
+  color: #FFFFFF;
+}
+.copyright-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #666;
+}
