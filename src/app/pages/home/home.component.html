@@ -6,7 +6,7 @@
           <ul>
             <!-- <li *ngFor="let item of coinPrice | keyvalue">{{item. key}} : {{item.value}}</li> -->
           </ul>
-          <h5 class=" card-category">Coins</h5>
+          <h5 class=" card-category"></h5>
           <h3 class=" card-title">
             <i class=" tim-icons icon-bell-55 text-danger-states"> </i> BTC and others
           </h3>
@@ -20,10 +20,12 @@
       <div class=" card card-tasks">
         <div class=" card-header">
           <h6 class=" title d-inline">Pairs</h6>
-          <p class=" card-category d-inline">today</p>
-          <p class="card-category d-inline" (click)="filterClick('BNB')"> BNB</p>
-          <p class="card-category d-inline" (click)="filterClick('BTC')"> BTC</p>
-          
+          <p class="card-category d-inline cursor m-l" (click)="filterClick('BNB')">BNB</p>
+          <p class="card-category d-inline cursor m-l" (click)="filterClick('BTC')">BTC</p>
+          <p class="card-category d-inline cursor m-l" (click)="filterClick('ETH')">ETH</p>
+          <p class="card-category d-inline cursor m-l" (click)="filterClick('TRX')">TRX</p>
+          <p class="card-category d-inline cursor m-l" (click)="filterClick('XRP')">XRP</p>
+
 <!--          <div ngbDropdown>-->
 <!--            <button-->
 <!--              class=" btn btn-link btn-icon"-->
@@ -49,8 +51,8 @@
             <table class=" table">
               <thead>
                 <td></td>
-                <td (click)="changeCharOrder()">Пара</td>
-                <td>Цена</td>
+                <td class="card-category cursor" style="text-align: left" (click)="changeCharOrder()">Pairs</td>
+                <td style="text-align: left">Price</td>
               </thead>
               <tbody>
               <tr *ngFor="let item of coinPrice">
@@ -73,7 +75,7 @@
                   <p class=" title">{{item. key}}</p>
                 </td>
                 <td>
-                  <p style="color: red;">
+                  <p class="price">
                     {{item.value}}
                   </p>
                 </td>
@@ -95,7 +97,7 @@
         <div class=" card-body" id="ETHBTC"></div>
       </div>
     </div>
-    <!-- <div class=" col-lg-6 col-md-12">
+    <div class=" col-lg-6 col-md-12">
       <div class=" card card-tasks">
         <div class=" card-header">
           <h6 class=" title d-inline">BTC/EUR</h6>
@@ -157,7 +159,7 @@
         </div>
         <div class=" card-body" id="DOGEBTC"></div>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>
 

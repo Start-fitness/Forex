@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {createChart, CrosshairMode} from 'lightweight-charts';
+import {createChart} from 'lightweight-charts';
 import {HttpClient} from '@angular/common/http';
 import Binance, {CandleChartInterval} from 'binance-api-node'
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   fullPrice = null;
   orderToggle = true;
 
-  coins =[];
+  coins = [];
   client = Binance({
     apiKey: 'V0wCyIqb6mZqGzo1zZmGHcU43aB3EcdC8Y5kuFpzb5w7lCusgBNv0Mxa1Mfbsod3',
     apiSecret: 'cdkdKyfxOMgx7bi5zmqX2AkFvCycFASsyy4lMxGBV3WKibBtl4VfA1unuejORAv',
@@ -110,15 +110,15 @@ export class HomeComponent implements OnInit {
   }
 
   createCoinPrice() {
-     this.client.prices()
+    this.client.prices()
       .then(price => {
 
-        let arr = [];
+        const arr = [];
 
         for (let prop in price) {
           arr.push({key: prop, value: price[prop]});
         }
-        
+
         this.sortDown(arr);
 
         this.fullPrice = arr;
@@ -142,7 +142,7 @@ export class HomeComponent implements OnInit {
   ///
 
   filterClick(arg) {
-    console.log("filterClick");
+    console.log('filterClick');
     arg = arg.toUpperCase();
 
     if (!this.fullPrice || Object.keys(this.fullPrice).length === 0) return;
@@ -160,13 +160,13 @@ export class HomeComponent implements OnInit {
     this.coinPrice = newPrice;
   }
 
-  changeCharOrder () {
+  changeCharOrder() {
     if (!this.coinPrice || Object.keys(this.coinPrice).length === 0) return;
-    
+
     this.orderToggle = !this.orderToggle;
 
-    let arr = this.coinPrice;
-    
+    const arr = this.coinPrice;
+
     if (this.orderToggle) {
       this.sortDown(arr);
     } else {
