@@ -12,7 +12,10 @@ export class HomeComponent implements OnInit {
   color: string;
   public http: HttpClient;
   results: any;
-  coinPrice = [];
+  coinPrice = {};
+  fullPrice = null;
+  orderToggle = true;
+
   coins =[];
   client = Binance({
     apiKey: 'V0wCyIqb6mZqGzo1zZmGHcU43aB3EcdC8Y5kuFpzb5w7lCusgBNv0Mxa1Mfbsod3',
@@ -109,10 +112,66 @@ export class HomeComponent implements OnInit {
   createCoinPrice() {
      this.client.prices()
       .then(price => {
-        this.coinPrice.push(price);
+
+        let arr = [];
+
+        for (let prop in price) {
+          arr.push({key: prop, value: price[prop]});
+        }
+        
+        this.sortDown(arr);
+
+        this.fullPrice = arr;
+        this.coinPrice = arr;
         console.log(this.coinPrice);
         console.dir(this.coinPrice);
       });
+  }
+
+  // functions-helpers
+
+  // sorting
+  sortDown(arr) {
+    arr.sort((a, b) => a.key > b.key ? 1 : -1);
+  }
+
+  sortUp(arr) {
+    arr.sort((a, b) => a.key < b.key ? 1 : -1);
+  }
+
+  ///
+
+  filterClick(arg) {
+    console.log("filterClick");
+    arg = arg.toUpperCase();
+
+    if (!this.fullPrice || Object.keys(this.fullPrice).length === 0) return;
+
+    let newPrice = [];
+
+    for (let i = 0; i < this.fullPrice.length; i++) {
+      if (this.fullPrice[i].key.indexOf(arg) !== -1) {
+        newPrice.push({key: this.fullPrice[i].key, value: this.fullPrice[i].value});
+      }
+    }
+
+    if (!this.orderToggle) this.sortUp(newPrice);
+
+    this.coinPrice = newPrice;
+  }
+
+  changeCharOrder () {
+    if (!this.coinPrice || Object.keys(this.coinPrice).length === 0) return;
+    
+    this.orderToggle = !this.orderToggle;
+
+    let arr = this.coinPrice;
+    
+    if (this.orderToggle) {
+      this.sortDown(arr);
+    } else {
+      this.sortUp(arr);
+    }
   }
 
   //  const clientWS = webSocket('wss://stream.binance.com:9443/ws/ethbtc@kline_5m');
